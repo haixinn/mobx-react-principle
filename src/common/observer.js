@@ -144,7 +144,7 @@ const reactiveMixin = {
 
     let reaction = null;
 
-    //是否render中
+    //是否render中 多个observeable修改只render一次
     let isRenderingPending = false;
 
     //初始化render  
@@ -253,10 +253,6 @@ export function observer(arg1, arg2) {
       }
     });
   }
-
-  // if (!componentClass) {
-  //   throw new Error("Please pass a valid component to 'observer'");
-  // }
 
   const target = componentClass.prototype || componentClass;
 
