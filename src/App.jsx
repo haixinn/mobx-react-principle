@@ -1,31 +1,47 @@
 import React, { Component } from 'react';
 import { observer } from './common/observer.js';
+import { observable } from 'mobx';
+
 @observer
 class App extends Component {
+
   componentWillMount() {
     console.log('componentWillMount')
   }
+
+  componentDidMount() {
+    console.log('did mount')
+  }
+
   render() {
+    console.log('render')
     return (
       <div>
         <button onClick={this.onReset}>
-          Seconds passed: {this.props.appState.timer}
+          Seconds passed:{this.props.appState.timer}
         </button>
       </div>
     );
   }
 
-  onReset = () => {
-    this.props.appState.resetTimer();
-  }
-};
+  // onReset = () => {
+  //   this.timer = 1000
+  // }
+}
 
-// const App = observer(({ timerData }) =>
-//   <span>Seconds passed: {timerData.secondsPassed} </span>
+// const App = observer(() =>
+//   <span>Seconds passed:2 </span>
 // );
 
 
 // class App extends Component {
+//   componentWillMount() {
+//     console.log('componentWillMount')
+//   }
+
+//   componentDidMount() {
+//     console.log('did mount')
+//   }
 //   render() {
 //     return (
 //       <div>
@@ -33,7 +49,6 @@ class App extends Component {
 //           {/*Seconds passed: {this.props.appState.timer}*/}
 //           111
 //         </button>
-//         <DevTools />
 //       </div>
 //     );
 //   }
