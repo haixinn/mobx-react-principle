@@ -236,7 +236,7 @@ export function observer(arg1, arg2) {
   // If it is function but doesn't seem to be a react class constructor,
   // wrap it to a react class automatically
 
-  // console.log(componentClass)
+  console.log(componentClass.prototype,componentClass.prototype.render)
 
   if (
     typeof componentClass === "function" &&

@@ -1,27 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import AppState from './AppState';
-import App from './App';
+import {Todo ,TodoList} from './AppState';
+import TodoListView from './App';
 
-const appState = new AppState();
+const store = new TodoList();
+store.todos.push(
+  new Todo("Get Coffee"),
+  new Todo("Write simpler code")
+);
+store.todos[0].finished = true;
 
 render(
   <AppContainer>
-    <App appState={appState} />
+    <TodoListView todoList={store} />
   </AppContainer>,
   document.getElementById('root')
 );
-
-// if (module.hot) {
-//   module.hot.accept('./App', () => {
-//     const NextApp = require('./App').default;
-
-//     render(
-//       <AppContainer>
-//         <NextApp appState={appState} />
-//       </AppContainer>,
-//       document.getElementById('root')
-//     );
-//   });
-// }
