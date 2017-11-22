@@ -52,6 +52,9 @@ function createStoreInjector(grabStoresFn, component, injectNames) {
       }
       console.log('this.context',this.context,newProps,this.context.mobxStores)
       //没整明白为啥传三参数
+      //看了下测试 test('custom storesToProps',
+      //这个inject的参数是个fn(stores, props, context) 
+      //真没见过这么用的啊
       var additionalProps = grabStoresFn(this.context.mobxStores || {}, newProps, this.context) || {};
       for (let key in additionalProps) {
         newProps[key] = additionalProps[key];
