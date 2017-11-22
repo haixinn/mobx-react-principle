@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { observer } from './common/observer.js';
+import inject from './common/inject'
 
+@inject('color','name')
 @observer
 class TodoListView extends Component {
   render() {
   console.log('render')
       return <div>
+        <div>{this.props.color}</div>
+        <div>{this.props.name}</div>
           <ul>
               {this.props.todoList.todos.map(todo => 
                   <TodoView todo={todo} key={todo.id} />
@@ -15,6 +19,7 @@ class TodoListView extends Component {
       </div>
   }
 }
+
 
 const TodoView = observer(({todo}) => 
   <li>

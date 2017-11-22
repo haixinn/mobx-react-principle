@@ -50,6 +50,8 @@ function createStoreInjector(grabStoresFn, component, injectNames) {
       for (let key in this.props) if (this.props.hasOwnProperty(key)) {
         newProps[key] = this.props[key];
       }
+      console.log('this.context',this.context,newProps,this.context.mobxStores)
+      //没整明白为啥传三参数
       var additionalProps = grabStoresFn(this.context.mobxStores || {}, newProps, this.context) || {};
       for (let key in additionalProps) {
         newProps[key] = additionalProps[key];
@@ -58,7 +60,6 @@ function createStoreInjector(grabStoresFn, component, injectNames) {
       if (!isStateless(component)) {
         newProps.ref = this.storeRef;
       }
-
       return React.createElement(component, newProps);
     }
   }
